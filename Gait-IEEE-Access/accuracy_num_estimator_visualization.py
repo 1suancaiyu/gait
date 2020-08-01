@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 #training time, test time, accuracy
 def visualization_macro():
 
-    data = np.load('running_time_new.npy').mean(axis = 1)
+    data = np.load('running_time_detail.npy').mean(axis = 1)
     num_estimators_unit = 200
 
     training_time = data[:, 0]

@@ -10,6 +10,8 @@ from sklearn.utils import shuffle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import f1_score
 
+print("\n erro* running \n")
+
 # train test divide
 def train_test_divide(x_data, y_data, ratio = 0.7):#mean_data, std_data, skew_data, median_data, amp_acc, amp_lin
     num_sample, num_feature = x_data.shape
@@ -67,6 +69,7 @@ def feature_extraction(data, starting_idx_rank, ending_idx_rank, sampling_size, 
     angler = []
 
     for idx in range(num_features):
+        print("\n idx :",idx, "\n")
         cor = data[idx * sampling_size:(idx + 1) * sampling_size, :]
         angleacc.append(fh.anglefinderacc(cor, bmi))
         angler.append(fh.anglefinder(cor))
@@ -183,8 +186,8 @@ def activity_feature_extraction(path, starting_idx_rank, ending_idx_rank, sampli
 
 
 #load feature, label data
-walk_features = np.load('walk_features_vis.npy')
-walk_labels = np.load('walk_labels_vis.npy')
+walk_features = np.load('walk_features.npy')
+walk_labels = np.load('walk_labels.npy')
 
 #set the # of estimators
 num_estimators = 500
@@ -192,7 +195,16 @@ num_estimators = 500
 #divide train and test data (labels)
 train_x_data, train_y_data, test_x_data, test_y_data = train_test_divide(walk_features, walk_labels)
 train_y_data = train_y_data[:, 0]
-test_y_data, test_y_data_idx = test_y_data[:, 0], test_y_data[:, 1]
+test_y_data, test_y_data_idx = test_y_data[:, 0], test_y_data[:, 0]
+
+'''
+test_y_data_idx = np.ones([2412,1])    #创建一个10行10列填充值为1的二维数组
+print("--------> test_y_data.shape",test_y_data.shape)
+print("---------> test_y_data_idx.shape", test_y_data_idx.shape)
+test_y_data_idx = test_y_data[:, 1]
+'''
+
+
 
 #number of unique users in our system
 num_participants = len(np.unique(walk_labels))

@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import skew
 from sklearn.utils import shuffle
 
+print("\n data_processing running... \n")
+
 def border_line_finding(data, activity_list):
 
     result = []
@@ -81,6 +83,7 @@ activity_divide(processed_data_path, activity_list, walk_data_path, run_data_pat
 
 
 
+print("\n data_processing done... \n")
 
 
 

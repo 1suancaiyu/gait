@@ -71,6 +71,7 @@ def feature_extraction(data, starting_idx_rank, ending_idx_rank, sampling_size, 
 
     for idx in range(num_features):
         cor = data[idx * sampling_size:(idx + 1) * sampling_size, :]
+        print("\n cor \n")
         angleacc.append(fh.anglefinderacc(cor, bmi))
         angler.append(fh.anglefinder(cor))
 
